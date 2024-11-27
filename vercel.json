@@ -19,11 +19,5 @@
       "src": "/(.*)",
       "dest": "frontend/$1"
     }
-  ],
-"env": {
-    "PORT": "5000",
-    "MONGODB_URI": "mongodb+srv://ndemovictorn:Victor2040dev@cluster0.fs7mp9v.mongodb.net/task_master?retryWrites=true&w=majority",
-    "JWT_SECRET": "development",
-    "NODE_ENV": "development"
-  }
+  ]
 }
