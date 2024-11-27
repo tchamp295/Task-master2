@@ -1,27 +1,29 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "backend/server.js",
-        "use": "@vercel/node"
-      },
-      {
-        "src": "frontend/**",
-        "use": "@vercel/static"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/api/(.*)",
-        "dest": "backend/server.js"
-      },
-      {
-        "src": "/(.*)",
-        "dest": "frontend/$1"
-      }
-    ],
-    "env": {
-      "MONGODB_URI": "@mongodb_uri",
-      "JWT_SECRET": "@jwt_secret"
+  "version": 2,
+  "builds": [
+    {
+      "src": "backend/server.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "frontend/**",
+      "use": "@vercel/static"
     }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "backend/server.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "frontend/$1"
+    }
+  ],
+"env": {
+    "PORT": "5000",
+    "MONGODB_URI": "mongodb+srv://ndemovictorn:Victor2040dev@cluster0.fs7mp9v.mongodb.net/task_master?retryWrites=true&w=majority",
+    "JWT_SECRET": "development",
+    "NODE_ENV": "development"
   }
+}
