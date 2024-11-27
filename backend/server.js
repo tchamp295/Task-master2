@@ -17,33 +17,33 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 
-// Static file serving
+// Serve static files
 const __dirname = path.resolve();
-app.use(express.static(path.join(__dirname, "frontend")));
+app.use(express.static(path.join(__dirname, "../frontend")));
 
-// API Routes
+// API routes
 app.use("/api/auth", userRoutes);
-app.use("/api/tasks", auth, taskRoutes); 
+app.use("/api/tasks", auth, taskRoutes);
 
+// Authenticated static file routes
 app.get("/dashboard.html", auth, (req, res) => {
-  res.sendFile(path.join(__dirname, "frontend", "dashboard.html"));
+  res.sendFile(path.join(__dirname, "../frontend", "dashboard.html"));
 });
-
 
 app.get("/edit-task.html", auth, (req, res) => {
-  res.sendFile(path.join(__dirname, "frontend", "edit-task.html"));
+  res.sendFile(path.join(__dirname, "../frontend", "edit-task.html"));
 });
 
-// Catch-all route for login/signup pages
+// Catch-all route for frontend
 app.get("*", (req, res) => {
   if (req.path.startsWith("/api/")) {
     return res.status(404).json({ message: "API route not found" });
   }
-  res.sendFile(path.join(__dirname, "frontend", "loginPage.html"));
+  res.sendFile(path.join(__dirname, "../frontend", "loginPage.html"));
 });
 
-
+// Error handling middleware
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// Export the app for Vercel
+export default app;
