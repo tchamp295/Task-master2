@@ -2,7 +2,7 @@
     "version": 2,
     "builds": [
       {
-        "src": "backend/index.js",
+        "src": "backend/server.js",
         "use": "@vercel/node"
       },
       {
@@ -13,12 +13,15 @@
     "routes": [
       {
         "src": "/api/(.*)",
-        "dest": "backend/index.js"
+        "dest": "backend/server.js"
       },
       {
         "src": "/(.*)",
         "dest": "frontend/$1"
       }
-    ]
+    ],
+    "env": {
+      "MONGODB_URI": "@mongodb_uri",
+      "JWT_SECRET": "@jwt_secret"
+    }
   }
-  
